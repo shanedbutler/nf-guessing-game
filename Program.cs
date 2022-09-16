@@ -8,7 +8,7 @@
             int guessCount = 1;
 
             // Instantiate random number generator and set an int randomly from 1 - 100.
-            var rand = new Random();
+            Random rand = new Random();
             int secretNum = rand.Next(1, 100);
 
             int guessAttempts = selectDifficulty();
@@ -45,7 +45,14 @@
                 }
                 catch
                 {
-                    Console.WriteLine($"This \"{guessInput}\" isn't a valid guess. Did you enter a number? Try again.");
+                    if (guessInput == "")
+                    {
+                        Console.WriteLine("You forgot to enter a number!");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"\"{guessInput}\" isn't a valid guess. Did you enter a number? Try again.");
+                    }
                 }
             }
         }
@@ -66,7 +73,7 @@
                     Console.WriteLine((i == menuSelect ? "* " : "") + menuOptions[i] + (i == menuSelect ? "<--" : ""));
                 }
 
-                var keyPressed = Console.ReadKey();
+                ConsoleKeyInfo keyPressed = Console.ReadKey();
 
                 if (keyPressed.Key == ConsoleKey.DownArrow && menuSelect != menuOptions.Length - 1)
                 {
