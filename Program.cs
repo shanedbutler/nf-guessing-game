@@ -4,17 +4,20 @@
     {
         static void Main(string[] args)
         {
-
-            int guessCount = 1;
+            
+            int min = 1;
+            int max = 100;
 
             // Instantiate random number generator and set an int randomly from 1 - 100.
             Random rand = new Random();
-            int secretNum = rand.Next(1, 100);
+            int secretNum = rand.Next(min, max);
 
             int guessAttempts = selectDifficulty();
 
-            Console.WriteLine("I'm thinking of a number from 1 to 100");
+            Console.WriteLine($"I'm thinking of a number from {min} to {max}");
             Console.WriteLine($"You have {guessAttempts} guesses to get it right");
+
+            int guessCount = 1;
 
             while (guessCount <= guessAttempts)
             {
@@ -58,7 +61,7 @@
         }
         public static int selectDifficulty()
         {
-            string[] menuOptions = new string[] { "Easy\t", "Medium\t", "Hard\t", "Cheater\t" };
+            string[] menuOptions = new string[] { "Easy ", "Medium ", "Hard ", "Cheater " };
             int menuSelect = 0;
 
             while (true)
@@ -70,7 +73,7 @@
 
                 for (int i = 0; i < menuOptions.Length; i++)
                 {
-                    Console.WriteLine((i == menuSelect ? "* " : "") + menuOptions[i] + (i == menuSelect ? "<--" : ""));
+                    Console.WriteLine(menuOptions[i] + (i == menuSelect ? "<--" : ""));
                 }
 
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
