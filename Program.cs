@@ -21,6 +21,11 @@
 
             while (guessCount <= guessAttempts)
             {
+                if (guessCount > 1)
+                {
+                    Console.WriteLine("Try again!");
+                }
+
                 Console.WriteLine($"\nEnter guess {guessCount}/{guessAttempts}: ");
                 string? guessInput = Console.ReadLine();
 
@@ -36,13 +41,13 @@
                     else if (guessNum > secretNum)
                     {
                         Console.WriteLine($"No, {guessNum} isn't it");
-                        Console.WriteLine("Try again, but maybe lower");
+                        Console.WriteLine("My number is lower");
                         guessCount++;
                     }
                     else if (guessNum < secretNum)
                     {
                         Console.WriteLine($"No, {guessNum} isn't it");
-                        Console.WriteLine("Try again, but maybe higher");
+                        Console.WriteLine("My number is higher");
                         guessCount++;
                     }
                 }
@@ -58,6 +63,7 @@
                     }
                 }
             }
+            Console.WriteLine($"My number was {secretNum}!");
         }
         public static int selectDifficulty()
         {
